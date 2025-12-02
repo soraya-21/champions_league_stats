@@ -9,16 +9,16 @@ from bokeh.models import ColumnDataSource, HoverTool
 from bokeh.palettes import Category10
 from sklearn.linear_model import LinearRegression
 
-# --- Charger les données ---
+# Charger les données
 df = pd.read_csv("all_players_clean.csv")
 
 def vis_PHY_DEF_by_nation(df):
     st.title("Visualisation de PHY et DEF par Nation")
-    # --- Garder les 10 nations les plus fréquentes ---
+    #   Garder les 10 nations les plus fréquentes  
     top_nations = df['Nation'].value_counts().nlargest(10).index
     df_top = df[df['Nation'].isin(top_nations)]
 
-    # --- Option de visualisation ---
+    #   Option de visualisation  
     option = st.selectbox("Que voulez-vous visualiser ?", ["Une seule stat", "PHY et DEF côte à côte"])
 
     if option == "Une seule stat":
@@ -131,9 +131,9 @@ def compare_PAC_SHO_with_regression(df):
             legend_label=f"{league} (points)",
         )
 
-        # ---------------------------
+        #          
         # TRENDLINE (linear regression)
-        # ---------------------------
+        #          
         x = league_data["PAC"].values
         y = league_data["SHO"].values
 
